@@ -22,10 +22,16 @@
 
         <!-- Sección de Martín -->
         <section id="martin" class="project-card">
-            <h2 class="project-title"></h2>
-            <img class="project-image" src="" alt="">
-            <p class="project-description"></p>
-            <div class="project-tags"></div>
+            <h2 class="project-title">Dashboard de Seguimiento de Salud - Codelco</h2>
+            <img class="project-image" src="https://via.placeholder.com/500x250/0F8B8D/FFFFFF?text=Power+BI+Dashboard" alt="Dashboard Power BI Codelco">
+            <p class="project-description">
+                Implementación de tableros dinámicos en Power BI para el seguimiento continuo de indicadores de enfermedades profesionales. Integración y automatización de flujos de datos alimentados automáticamente desde hojas de cálculo de Excel para la toma de decisiones oportuna.
+            </p>
+            <div class="project-tags">
+                <span class="tag">Power BI</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Análisis de Datos</span>
+            </div>
         </section>
     </main>
 </body>
