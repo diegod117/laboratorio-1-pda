@@ -35,6 +35,16 @@ main {
   font-family: 'Inter', sans-serif;
 }
 
+.project-author {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #0F8B8D;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px;
+}
+
 .project-title {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
