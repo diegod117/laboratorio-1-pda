@@ -1,0 +1,69 @@
+/* Importación de fuentes acordadas */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Poppins:wght@600;700&display=swap');
+
+/* Estilos globales y colores */
+body {
+    background-color: #1A1A2E;
+    color: #F5F5F5;
+    font-family: 'Inter', sans-serif;
+}
+
+.project-title {
+    font-family: 'Poppins', sans-serif;
+    color: #0F8B8D;
+}
+
+/* Estilos de la tarjeta e imagen */
+.project-card {
+    background-color: #FFFFFF;
+    color: #1A1A2E;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 12px 0;
+}
+
+/* Formato de texto y etiquetas */
+.project-description {
+    line-height: 1.6;
+    text-align: justify;
+    color: #2D3748;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tag {
+    background-color: #0F8B8D;
+    color: #FFFFFF;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* Enlace de contacto profesional */
+.project-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: #0F8B8D;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
