@@ -41,7 +41,7 @@
             margin: 12px 0;
         }
 
-        
+        /* Formato de texto y etiquetas */
         .project-description {
             line-height: 1.6;
             text-align: justify;
@@ -62,6 +62,20 @@
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: bold;
+        }
+
+        /* Enlace de contacto profesional */
+        .project-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #0F8B8D;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -90,6 +104,8 @@
                 <span class="tag">Excel</span>
                 <span class="tag">Análisis de Datos</span>
             </div>
+            <!-- Enlace a LinkedIn agregado -->
+            <a href="https://www.linkedin.com/feed/" target="_blank" class="project-link">Ver mi perfil de LinkedIn →</a>
         </section>
     </main>
 </body>
