@@ -6,6 +6,23 @@
     <title>Sitio de Proyectos - Mish</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Importación de fuentes acordadas */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Poppins:wght@600;700&display=swap');
+
+        /* Estilos globales y colores */
+        body {
+            background-color: #1A1A2E;
+            color: #F5F5F5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .project-title {
+            font-family: 'Poppins', sans-serif;
+            color: #0F8B8D;
+        }
+    </style>
 </head>
 <body>
     <header>
