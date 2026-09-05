@@ -23,7 +23,7 @@
             color: #0F8B8D;
         }
 
-        
+        /* Estilos de la tarjeta e imagen */
         .project-card {
             background-color: #FFFFFF;
             color: #1A1A2E;
@@ -39,6 +39,29 @@
             height: auto;
             border-radius: 6px;
             margin: 12px 0;
+        }
+
+        
+        .project-description {
+            line-height: 1.6;
+            text-align: justify;
+            color: #2D3748;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            background-color: #0F8B8D;
+            color: #FFFFFF;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
     </style>
 </head>
