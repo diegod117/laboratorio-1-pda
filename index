@@ -22,6 +22,24 @@
             font-family: 'Poppins', sans-serif;
             color: #0F8B8D;
         }
+
+        
+        .project-card {
+            background-color: #FFFFFF;
+            color: #1A1A2E;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
     </style>
 </head>
 <body>
