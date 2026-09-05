@@ -53,6 +53,12 @@ main {
   margin-bottom: 12px;
 }
 
+.project-subtitle {
+  color: #0F8B8D;
+  font-size: 0.95rem;
+  margin: -4px 0 12px;
+}
+
 .project-image {
   width: 100%;
   height: auto;
