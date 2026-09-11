@@ -125,4 +125,5 @@ main {
 }
 
 #johann.project-card {
+  border-top: 4px solid var(--accent);
 }
