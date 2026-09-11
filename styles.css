@@ -127,3 +127,7 @@ main {
 #johann.project-card {
   border-top: 4px solid var(--accent);
 }
+
+#johann .project-tags {
+  justify-content: flex-start;
+}
