@@ -131,3 +131,8 @@ main {
 #johann .project-tags {
   justify-content: flex-start;
 }
+
+#johann .cv-link {
+  margin-top: 8px;
+  border: 1px solid var(--accent);
+}
