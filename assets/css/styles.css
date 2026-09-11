@@ -124,6 +124,23 @@ main {
   }
 }
 
+#johann.project-card {
+  border-top: 4px solid var(--accent);
+}
+
+#johann .project-tags {
+  justify-content: flex-start;
+}
+
+#johann .cv-link {
+  margin-top: 8px;
+  border: 1px solid var(--accent);
+}
+
+#johann .project-description {
+  letter-spacing: 0.01em;
+}
+
 .cv-button {
   align-self: flex-start;
   background-color: var(--bg-dark);
