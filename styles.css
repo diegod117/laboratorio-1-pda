@@ -100,3 +100,19 @@ main {
   font-weight: 600;
 }
 
+.cv-button {
+  align-self: flex-start;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+ 
+.cv-button:hover {
+  background-color: var(--accent);
+}
