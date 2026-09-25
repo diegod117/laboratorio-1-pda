@@ -139,3 +139,10 @@ body.modo-claro .project-card {
 .btn-accion:hover {
   background-color: #0C6F71;
 }
+
+.efecto-agrandar {
+  transform: scale(1.10);
+  color: #0F8B8D;
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
