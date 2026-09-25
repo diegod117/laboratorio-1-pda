@@ -5,3 +5,6 @@ btnTema.addEventListener("click", () => {
   const esClaro = document.body.classList.contains("modo-claro");
   btnTema.textContent = esClaro ? "🌙 Modo oscuro" : "☀️ Modo claro";
 });
+
+// --- Interacción de Martín ---
+const nombreMartin = document.querySelector('#martin .nombre-integrante');
