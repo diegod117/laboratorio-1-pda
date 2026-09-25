@@ -39,7 +39,9 @@
    <section id="diego" class="project-card">
       <h2 class="project-title">Diego Cortes Toro</h2>
       <p class="project-subtitle">Estudiante Ing. Civil en Computación e Informática — Universidad Central de Chile</p>
-      <img src="assets/diego-project.png" alt="Ilustración de desarrollo de software" class="project-image">
+      <div class="project-image">
+        <img src="diego-project.png" alt="Ilustración de desarrollo de software">
+      </div>
       <p class="project-description">
         Estudiante de 4° año con formación sólida en programación, desarrollo de sistemas y hardware.
         He participado en proyectos universitarios de integración de sistemas en equipos multidisciplinarios
@@ -56,8 +58,18 @@
         <span class="tag">Arduino</span>
         <span class="tag">IoT</span>
       </div>
-      <a class="cv-button" href="assets/cv-diego.pdf" target="_blank" rel="noopener">Ver currículo</a>
+      <div class="cv-thumbnail" id="cv-thumbnail" tabindex="0" role="button" aria-label="Ver currículo en grande">
+        <span class="cv-thumbnail-icon">📄</span>
+        <span class="cv-thumbnail-label">Ver currículo</span>
+      </div>
     </section>
+
+    <div class="cv-modal" id="cv-modal">
+      <div class="cv-modal-content">
+        <button class="cv-modal-close" id="cv-modal-close" aria-label="Cerrar vista previa">&times;</button>
+        <embed src="cv-diego.pdf" type="application/pdf" class="cv-modal-embed">
+      </div>
+    </div>
 
     <section id="martin" class="project-card">
   <h2 class="project-title">Martín Zepeda - Estudiante de Ingeniería Informática</h2>
