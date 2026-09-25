@@ -8,3 +8,7 @@ btnTema.addEventListener("click", () => {
 
 // --- Interacción de Martín ---
 const nombreMartin = document.querySelector('#martin .nombre-integrante');
+
+nombreMartin.addEventListener('mouseover', function() {
+    nombreMartin.classList.add('efecto-agrandar');
+});
