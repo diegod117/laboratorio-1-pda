@@ -12,4 +12,6 @@ console.log(btnGeoDetalles, geoDetalles);
 
 btnGeoDetalles.addEventListener("click", () => {
   geoDetalles.classList.toggle("oculto");
+  const estaOculto = geoDetalles.classList.contains("oculto");
+  btnGeoDetalles.textContent = estaOculto ? "Ver más detalles" : "Ver menos";
 });
