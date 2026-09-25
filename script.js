@@ -11,5 +11,5 @@ const geoDetalles = document.querySelector("#geo-detalles");
 console.log(btnGeoDetalles, geoDetalles);
 
 btnGeoDetalles.addEventListener("click", () => {
-  console.log("Clic en Ver más detalles");
+  geoDetalles.classList.toggle("oculto");
 });
