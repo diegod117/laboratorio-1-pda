@@ -26,9 +26,19 @@ if (cvThumbnail && cvModal && cvModalClose) {
 }
 });
 
+// --- Interacción de Martín ---
+const nombreMartin = document.querySelector('#martin .nombre-integrante');
+
+nombreMartin.addEventListener('mouseover', function() {
+    nombreMartin.classList.add('efecto-agrandar');
+});
+
+nombreMartin.addEventListener('mouseout', function() {
+    nombreMartin.classList.remove('efecto-agrandar');
+});
+
 const btnGeoDetalles = document.querySelector("#btn-geo-detalles");
 const geoDetalles = document.querySelector("#geo-detalles");
-console.log(btnGeoDetalles, geoDetalles);
 
 btnGeoDetalles.addEventListener("click", () => {
   geoDetalles.classList.toggle("oculto");

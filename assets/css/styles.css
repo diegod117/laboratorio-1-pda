@@ -181,3 +181,10 @@ main {
   line-height: 1;
   cursor: pointer;
 }
+
+.efecto-agrandar {
+  transform: scale(1.10);
+  color: #0F8B8D;
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
