@@ -83,3 +83,59 @@ main {
   text-decoration: none;
   font-weight: 600;
 }
+
+/* ===== Función de equipo: modo claro ===== */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-tema {
+  margin-top: 16px;
+  background-color: transparent;
+  color: #F5F5F5;
+  border: 2px solid #0F8B8D;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.btn-tema:hover {
+  background-color: #0F8B8D;
+  color: #F5F5F5;
+}
+
+body.modo-claro {
+  background-color: #F5F5F5;
+  color: #1A1A2E;
+}
+
+body.modo-claro header h1,
+body.modo-claro .btn-tema {
+  color: #1A1A2E;
+}
+
+body.modo-claro .project-card {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Utilidades compartidas ===== */
+.oculto {
+  display: none;
+}
+
+.btn-accion {
+  background-color: #0F8B8D;
+  color: #F5F5F5;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.btn-accion:hover {
+  background-color: #0C6F71;
+}
