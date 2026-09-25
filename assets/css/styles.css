@@ -140,6 +140,15 @@ body.modo-claro .project-card {
   background-color: #0C6F71;
 }
 
+.geo-detalles {
+  color: #1A1A2E;
+  background-color: #E8F4F4;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
 .efecto-agrandar {
   transform: scale(1.10);
   color: #0F8B8D;
