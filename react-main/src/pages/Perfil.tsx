@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import './Perfil.css'
 
 function Perfil() {
   const { usuario: usuarioUrl } = useParams<{ usuario: string }>()

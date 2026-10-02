@@ -1,0 +1,186 @@
+/* ===== Perfil — Estilos de la tarjeta de Diego ===== */
+
+/* Layout principal del perfil */
+main:has(.perfil-card) {
+  padding: 40px 24px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+main:has(.perfil-card) > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+main:has(.perfil-card) > header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+main:has(.perfil-card) > header button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+main:has(.perfil-card) > header button:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+/* Tarjeta de perfil */
+.perfil-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.perfil-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    rgba(0, 0, 0, 0.15) 0 20px 25px -5px,
+    rgba(0, 0, 0, 0.08) 0 8px 10px -6px;
+}
+
+.perfil-card-titulo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 4px;
+}
+
+.perfil-card-subtitulo {
+  font-size: 14px;
+  color: var(--accent);
+  margin: 0 0 20px;
+  font-weight: 500;
+}
+
+.perfil-card-descripcion {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+/* Tags de tecnologías */
+.perfil-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.perfil-card-tags .tag {
+  display: inline-block;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 0.15s ease;
+}
+
+.perfil-card-tags .tag:hover {
+  transform: scale(1.05);
+}
+
+/* Botón de me gusta */
+.perfil-card-likes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.btn-me-gusta {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  padding: 8px 20px;
+  border-radius: 24px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.btn-me-gusta:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.btn-me-gusta:active {
+  transform: scale(0.95);
+}
+
+.likes-count {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+/* Última visita */
+.perfil-card-visita {
+  font-size: 13px;
+  color: var(--text);
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  opacity: 0.7;
+}
+
+/* Pantallas de error (acceso denegado / no autorizado) */
+main:has(button):not(:has(.perfil-card)) {
+  padding: 80px 24px;
+  text-align: center;
+}
+
+main:has(button):not(:has(.perfil-card)) h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+main:has(button):not(:has(.perfil-card)) button {
+  margin-top: 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+main:has(button):not(:has(.perfil-card)) button:hover {
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .perfil-card {
+    padding: 20px;
+  }
+
+  main:has(.perfil-card) > header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
