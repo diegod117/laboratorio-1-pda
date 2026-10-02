@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
@@ -5,6 +6,9 @@ function Perfil() {
   const { usuario, logout } = useAuth()
   const { usuario: usuarioUrl } = useParams<{ usuario: string }>()
   const navigate = useNavigate()
+
+  // Estado tipado para contador de recomendaciones / me gusta
+  const [likes, setLikes] = useState<number>(0)
 
   // Si no hay usuario logueado, redirigir al login
   if (!usuario) {
@@ -82,6 +86,13 @@ function Perfil() {
             >
               Ver perfil de LinkedIn →
             </a>
+          </div>
+
+          {/* Contador con estado tipado useState<number> */}
+          <div style={estilos.contadorWrapper}>
+            <span style={estilos.contadorTexto}>
+              ❤️ Me gusta del proyecto: <strong>{likes}</strong>
+            </span>
           </div>
         </div>
 
@@ -227,6 +238,18 @@ const estilos: Record<string, React.CSSProperties> = {
     color: 'var(--accent)',
     textDecoration: 'none',
     fontWeight: 600,
+  },
+  contadorWrapper: {
+    marginTop: '16px',
+    paddingTop: '16px',
+    borderTop: '1px dashed var(--border)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+  },
+  contadorTexto: {
+    fontSize: '14px',
+    color: 'var(--text-h)',
   },
   titulo: {
     fontSize: '28px',
