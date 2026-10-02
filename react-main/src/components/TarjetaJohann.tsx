@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import geocuartelIcon from '../assets/geocuartel.png'
@@ -7,6 +7,7 @@ function TarjetaJohann() {
   const { usuario: usuarioUrl } = useParams()
   const auth = useContext(AuthContext)
   const esMiPerfil = auth?.usuario?.nombre === usuarioUrl
+  const [meGusta, setMeGusta] = useState<number>(0)
 
   return (
     <section className="project-card">
@@ -32,6 +33,9 @@ function TarjetaJohann() {
         <span className="tag">Supabase</span>
         <span className="tag">Netlify</span>
       </div>
+      <button className="btn-accion" onClick={() => setMeGusta(meGusta + 1)}>
+        👍 Me gusta ({meGusta})
+      </button>
     </section>
   )
 }
