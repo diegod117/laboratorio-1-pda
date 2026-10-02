@@ -10,6 +10,11 @@ function Perfil() {
   // Estado tipado para contador de recomendaciones / me gusta
   const [likes, setLikes] = useState<number>(0)
 
+  // Evento que actualiza el contador al hacer clic
+  const handleLike = () => {
+    setLikes((prev) => prev + 1)
+  }
+
   // Si no hay usuario logueado, redirigir al login
   if (!usuario) {
     return (
@@ -88,11 +93,18 @@ function Perfil() {
             </a>
           </div>
 
-          {/* Contador con estado tipado useState<number> */}
+          {/* Contador con estado tipado useState<number> y evento onClick */}
           <div style={estilos.contadorWrapper}>
             <span style={estilos.contadorTexto}>
               ❤️ Me gusta del proyecto: <strong>{likes}</strong>
             </span>
+            <button
+              onClick={handleLike}
+              style={estilos.botonLike}
+              aria-label="Dar me gusta"
+            >
+              Dar me gusta 👍
+            </button>
           </div>
         </div>
 
@@ -250,6 +262,18 @@ const estilos: Record<string, React.CSSProperties> = {
   contadorTexto: {
     fontSize: '14px',
     color: 'var(--text-h)',
+  },
+  botonLike: {
+    padding: '6px 14px',
+    fontSize: '13px',
+    fontWeight: 600,
+    borderRadius: '10px',
+    border: '1px solid var(--accent)',
+    background: 'var(--accent)',
+    color: '#fff',
+    cursor: 'pointer',
+    fontFamily: 'var(--sans)',
+    transition: 'opacity 0.2s',
   },
   titulo: {
     fontSize: '28px',
