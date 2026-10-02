@@ -17,9 +17,12 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null)
 
-  // Sin backend: la contraseña no se valida, solo se guarda el nombre en sesión
-  const iniciarSesion = (nombre: string, _contrasena: string) =>
-    setUsuario({ nombre })
+  // Credenciales válidas (simulación sin backend)
+  const iniciarSesion = (nombre: string, contrasena: string) => {
+    if (nombre === 'diego' && contrasena === '1234') {
+      setUsuario({ nombre })
+    }
+  }
   const logout = () => setUsuario(null)
 
   return (
