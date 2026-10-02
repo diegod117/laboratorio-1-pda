@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import TarjetaJohann from '../components/TarjetaJohann'
 import TarjetaDiego from '../components/TarjetaDiego'
 import TarjetaMartin from '../components/TarjetaMartin'
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from '../context/authContexto'
 import { cuentas } from '../data/usuarios'
 
 // cada integrante muestra su propia tarjeta en su perfil
