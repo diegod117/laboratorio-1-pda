@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { AuthContext } from '../context/AuthContext'
 
 function Perfil() {
-  const { usuario, logout } = useAuth()
+  const auth = useContext(AuthContext)
+  const usuario = auth?.usuario
+  const logout = auth?.logout
   const { usuario: usuarioUrl } = useParams<{ usuario: string }>()
   const navigate = useNavigate()
 
@@ -61,8 +63,14 @@ function Perfil() {
   // Confirmar si el usuario en la URL coincide con la sesión activa
   const esUsuarioValido = usuario.nombre.toLowerCase() === usuarioUrl?.toLowerCase()
 
+  // Nombre para mostrar en el perfil
+  const nombreMostrar =
+    usuario.nombre.toLowerCase() === 'martin'
+      ? 'Martin Zepeda Puelles'
+      : usuario.nombre
+
   const handleLogout = () => {
-    logout()
+    if (logout) logout()
     navigate('/')
   }
 
@@ -72,13 +80,13 @@ function Perfil() {
         {/* Avatar */}
         <div style={estilos.avatarWrapper}>
           <div style={estilos.avatar}>
-            {usuario.nombreCompleto.charAt(0).toUpperCase()}
+            {nombreMostrar.charAt(0).toUpperCase()}
           </div>
         </div>
 
         {/* Saludo y Nombre completo */}
         <p style={estilos.saludo}>Bienvenido 👋</p>
-        <h1 style={estilos.nombreCompleto}>{usuario.nombreCompleto}</h1>
+        <h1 style={estilos.nombreCompleto}>{nombreMostrar}</h1>
 
         {/* Verificación con useParams */}
         <div style={esUsuarioValido ? estilos.badgeValido : estilos.badgeInvalido}>
