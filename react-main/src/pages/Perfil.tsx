@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
@@ -10,10 +10,34 @@ function Perfil() {
   // Estado tipado para contador de recomendaciones / me gusta
   const [likes, setLikes] = useState<number>(0)
 
+  // Estado para registrar la última visita desde localStorage
+  const [ultimaVisita, setUltimaVisita] = useState<string>('')
+
   // Evento que actualiza el contador al hacer clic
   const handleLike = () => {
     setLikes((prev) => prev + 1)
   }
+
+  // useEffect que registra en localStorage la última visita al perfil
+  useEffect(() => {
+    if (usuario) {
+      const claveStorage = `ultima_visita_${usuario.nombre.toLowerCase()}`
+      const visitaPrevia = localStorage.getItem(claveStorage)
+
+      if (visitaPrevia) {
+        setUltimaVisita(visitaPrevia)
+      } else {
+        setUltimaVisita('Primera visita registrada en este navegador')
+      }
+
+      // Guardar la fecha y hora de la visita actual
+      const ahora = new Date().toLocaleString('es-CL', {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      })
+      localStorage.setItem(claveStorage, ahora)
+    }
+  }, [usuario])
 
   // Si no hay usuario logueado, redirigir al login
   if (!usuario) {
@@ -118,6 +142,11 @@ function Perfil() {
           <div style={estilos.infoFila}>
             <span style={estilos.infoLabel}>📧 Email</span>
             <span style={estilos.infoValor}>{usuario.email}</span>
+          </div>
+          <div style={estilos.separador} />
+          <div style={estilos.infoFila}>
+            <span style={estilos.infoLabel}>🕒 Última visita (localStorage)</span>
+            <span style={estilos.infoValor}>{ultimaVisita}</span>
           </div>
         </div>
 
