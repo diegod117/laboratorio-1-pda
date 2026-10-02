@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import geocuartelIcon from '../assets/geocuartel.png'
+import './TarjetaJohann.css'
 
 function TarjetaJohann() {
   const { usuario: usuarioUrl } = useParams()
@@ -17,7 +18,7 @@ function TarjetaJohann() {
   }, [clave])
 
   return (
-    <section className="project-card">
+    <section className="project-card tarjeta-johann">
       {esMiPerfil ? (
         <p className="perfil-estado">Hola {usuarioUrl}, este es tu perfil</p>
       ) : (
