@@ -1,19 +1,8 @@
-import { createContext, useState } from 'react'
+import { useState } from 'react'
 import type { ReactNode } from 'react'
+import { AuthContext } from './authContexto'
+import type { Usuario } from './authContexto'
 import { cuentas } from '../data/usuarios'
-
-export interface Usuario {
-  nombre: string
-  email?: string
-}
-
-export interface AuthContextType {
-  usuario: Usuario | null
-  iniciarSesion: (nombre: string, contrasena: string) => boolean
-  logout: () => void
-}
-
-export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null)

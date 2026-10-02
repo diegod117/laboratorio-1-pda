@@ -1,7 +1,18 @@
-import { useState, useEffect, useContext } from 'react'
+import { useContext } from 'react'
+import type { ComponentType, CSSProperties } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import TarjetaJohann from '../components/TarjetaJohann'
-import { AuthContext } from '../context/AuthContext'
+import TarjetaDiego from '../components/TarjetaDiego'
+import TarjetaMartin from '../components/TarjetaMartin'
+import { AuthContext } from '../context/authContexto'
+import { cuentas } from '../data/usuarios'
+
+// cada integrante muestra su propia tarjeta en su perfil
+const tarjetas: Record<string, ComponentType> = {
+  johann1234: TarjetaJohann,
+  diego: TarjetaDiego,
+  martin: TarjetaMartin,
+}
 
 function Perfil() {
   const auth = useContext(AuthContext)
@@ -9,38 +20,6 @@ function Perfil() {
   const logout = auth?.logout
   const { usuario: usuarioUrl } = useParams<{ usuario: string }>()
   const navigate = useNavigate()
-
-  // Estado tipado para contador de recomendaciones / me gusta
-  const [likes, setLikes] = useState<number>(0)
-
-  // Estado para registrar la última visita desde localStorage
-  const [ultimaVisita, setUltimaVisita] = useState<string>('')
-
-  // Evento que actualiza el contador al hacer clic
-  const handleLike = () => {
-    setLikes((prev) => prev + 1)
-  }
-
-  // useEffect que registra en localStorage la última visita al perfil
-  useEffect(() => {
-    if (usuario) {
-      const claveStorage = `ultima_visita_${usuario.nombre.toLowerCase()}`
-      const visitaPrevia = localStorage.getItem(claveStorage)
-
-      if (visitaPrevia) {
-        setUltimaVisita(visitaPrevia)
-      } else {
-        setUltimaVisita('Primera visita registrada en este navegador')
-      }
-
-      // Guardar la fecha y hora de la visita actual
-      const ahora = new Date().toLocaleString('es-CL', {
-        dateStyle: 'medium',
-        timeStyle: 'short',
-      })
-      localStorage.setItem(claveStorage, ahora)
-    }
-  }, [usuario])
 
   // Si no hay usuario logueado, redirigir al login
   if (!usuario) {
@@ -65,10 +44,9 @@ function Perfil() {
   const esUsuarioValido = usuario.nombre.toLowerCase() === usuarioUrl?.toLowerCase()
 
   // Nombre para mostrar en el perfil
-  const nombreMostrar =
-    usuario.nombre.toLowerCase() === 'martin'
-      ? 'Martin Zepeda Puelles'
-      : usuario.nombre
+  const cuenta = cuentas.find((c) => c.usuario === usuario.nombre)
+  const nombreMostrar = cuenta?.nombreCompleto ?? usuario.nombre
+  const Tarjeta = tarjetas[usuario.nombre]
 
   const handleLogout = () => {
     if (logout) logout()
@@ -97,65 +75,13 @@ function Perfil() {
         </div>
 
         {/* Tarjeta con datos del Laboratorio 1 */}
-        <div style={estilos.tarjetaProyecto}>
-          <h2 style={estilos.subtituloProyecto}>Estudiante de Ingeniería Informática</h2>
-          <img
-            src="https://img.magnific.com/vector-gratis/cartel-nostalgia-noventa_603843-2317.jpg?semt=ais_hybrid&w=740&q=80"
-            alt="Proyecto de Martín"
-            style={estilos.imagenProyecto}
-          />
-          <p style={estilos.descripcionProyecto}>
-            Implementación de tableros dinámicos en Power BI para el seguimiento continuo
-            de indicadores de enfermedades profesionales. Integración y automatización de
-            flujos de datos alimentados automáticamente desde hojas de cálculo de Excel
-            para la toma de decisiones oportuna.
-          </p>
-          <div style={estilos.tags}>
-            <span style={estilos.tag}>Power BI</span>
-            <span style={estilos.tag}>Excel</span>
-            <span style={estilos.tag}>Análisis de Datos</span>
-          </div>
-          <div style={estilos.enlaces}>
-            <a
-              href="https://www.linkedin.com/feed/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={estilos.enlace}
-            >
-              Ver perfil de LinkedIn →
-            </a>
-          </div>
-
-          {/* Contador con estado tipado useState<number> y evento onClick */}
-          <div style={estilos.contadorWrapper}>
-            <span style={estilos.contadorTexto}>
-              ❤️ Me gusta del proyecto: <strong>{likes}</strong>
-            </span>
-            <button
-              onClick={handleLike}
-              style={estilos.botonLike}
-              aria-label="Dar me gusta"
-            >
-              Dar me gusta 👍
-            </button>
-          </div>
-        </div>
+        {Tarjeta && <Tarjeta />}
 
         {/* Info de cuenta */}
         <div style={estilos.infoCard}>
           <div style={estilos.infoFila}>
             <span style={estilos.infoLabel}>👤 Usuario</span>
             <span style={estilos.infoValor}>{usuario.nombre}</span>
-          </div>
-          <div style={estilos.separador} />
-          <div style={estilos.infoFila}>
-            <span style={estilos.infoLabel}>📧 Email</span>
-            <span style={estilos.infoValor}>{usuario.email}</span>
-          </div>
-          <div style={estilos.separador} />
-          <div style={estilos.infoFila}>
-            <span style={estilos.infoLabel}>🕒 Última visita (localStorage)</span>
-            <span style={estilos.infoValor}>{ultimaVisita}</span>
           </div>
         </div>
 
@@ -164,12 +90,11 @@ function Perfil() {
           Cerrar sesión
         </button>
       </div>
-      <TarjetaJohann />
     </main>
   )
 }
 
-const estilos: Record<string, React.CSSProperties> = {
+const estilos: Record<string, CSSProperties> = {
   contenedor: {
     display: 'flex',
     alignItems: 'center',
@@ -237,82 +162,6 @@ const estilos: Record<string, React.CSSProperties> = {
     color: '#ef4444',
     border: '1px solid rgba(239, 68, 68, 0.3)',
     marginBottom: '24px',
-  },
-  tarjetaProyecto: {
-    background: 'var(--code-bg)',
-    borderRadius: '16px',
-    padding: '24px',
-    marginBottom: '24px',
-    border: '1px solid var(--border)',
-    textAlign: 'left' as const,
-  },
-  subtituloProyecto: {
-    fontSize: '17px',
-    color: 'var(--accent)',
-    margin: '0 0 16px',
-    fontWeight: 600,
-  },
-  imagenProyecto: {
-    width: '100%',
-    maxHeight: '220px',
-    objectFit: 'cover' as const,
-    borderRadius: '10px',
-    marginBottom: '16px',
-  },
-  descripcionProyecto: {
-    fontSize: '14px',
-    lineHeight: 1.6,
-    color: 'var(--text)',
-    marginBottom: '16px',
-  },
-  tags: {
-    display: 'flex',
-    gap: '8px',
-    flexWrap: 'wrap' as const,
-    marginBottom: '16px',
-  },
-  tag: {
-    fontSize: '12px',
-    fontWeight: 600,
-    padding: '4px 10px',
-    borderRadius: '20px',
-    background: 'var(--accent-bg)',
-    color: 'var(--accent)',
-    border: '1px solid var(--accent-border)',
-  },
-  enlaces: {
-    display: 'flex',
-    gap: '12px',
-  },
-  enlace: {
-    fontSize: '13px',
-    color: 'var(--accent)',
-    textDecoration: 'none',
-    fontWeight: 600,
-  },
-  contadorWrapper: {
-    marginTop: '16px',
-    paddingTop: '16px',
-    borderTop: '1px dashed var(--border)',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-  },
-  contadorTexto: {
-    fontSize: '14px',
-    color: 'var(--text-h)',
-  },
-  botonLike: {
-    padding: '6px 14px',
-    fontSize: '13px',
-    fontWeight: 600,
-    borderRadius: '10px',
-    border: '1px solid var(--accent)',
-    background: 'var(--accent)',
-    color: '#fff',
-    cursor: 'pointer',
-    fontFamily: 'var(--sans)',
-    transition: 'opacity 0.2s',
   },
   titulo: {
     fontSize: '28px',
