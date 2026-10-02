@@ -6,6 +6,7 @@ import { AuthContext } from '../context/AuthContext'
 function Login() {
   const [nombreUsuario, setNombreUsuario] = useState<string>('')
   const [contrasena, setContrasena] = useState<string>('')
+  const [error, setError] = useState<string>('')
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -19,7 +20,10 @@ function Login() {
     const nombre = nombreUsuario.trim()
     if (!nombre || !contrasena) return
 
-    iniciarSesion(nombre, contrasena)
+    if (!iniciarSesion(nombre, contrasena)) {
+      setError('Usuario o contraseña incorrectos')
+      return
+    }
     navigate(`/perfil/${encodeURIComponent(nombre)}`)
   }
 
@@ -46,6 +50,8 @@ function Login() {
           autoComplete="current-password"
           required
         />
+
+        {error && <p role="alert">{error}</p>}
 
         <button type="submit">Entrar</button>
       </form>
