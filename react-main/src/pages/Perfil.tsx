@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 function Perfil() {
   const { usuario, logout } = useAuth()
+  const { usuario: usuarioUrl } = useParams<{ usuario: string }>()
   const navigate = useNavigate()
 
   // Si no hay usuario logueado, redirigir al login
@@ -24,6 +25,9 @@ function Perfil() {
     )
   }
 
+  // Confirmar si el usuario en la URL coincide con la sesión activa
+  const esUsuarioValido = usuario.nombre.toLowerCase() === usuarioUrl?.toLowerCase()
+
   const handleLogout = () => {
     logout()
     navigate('/')
@@ -42,6 +46,13 @@ function Perfil() {
         {/* Saludo y Nombre completo */}
         <p style={estilos.saludo}>Bienvenido 👋</p>
         <h1 style={estilos.nombreCompleto}>{usuario.nombreCompleto}</h1>
+
+        {/* Verificación con useParams */}
+        <div style={esUsuarioValido ? estilos.badgeValido : estilos.badgeInvalido}>
+          {esUsuarioValido
+            ? `✓ Perfil confirmado: @${usuarioUrl} coincide con la sesión actual`
+            : `⚠️ Estás viendo la ruta de @${usuarioUrl}, pero iniciaste sesión como @${usuario.nombre}`}
+        </div>
 
         {/* Tarjeta con datos del Laboratorio 1 */}
         <div style={estilos.tarjetaProyecto}>
@@ -139,9 +150,31 @@ const estilos: Record<string, React.CSSProperties> = {
     fontSize: '36px',
     fontWeight: 700,
     color: 'var(--text-h)',
-    margin: '0 0 24px',
+    margin: '0 0 16px',
     letterSpacing: '-1px',
     lineHeight: 1.2,
+  },
+  badgeValido: {
+    display: 'inline-block',
+    fontSize: '13px',
+    fontWeight: 500,
+    padding: '6px 14px',
+    borderRadius: '20px',
+    background: 'rgba(16, 185, 129, 0.1)',
+    color: '#10b981',
+    border: '1px solid rgba(16, 185, 129, 0.3)',
+    marginBottom: '24px',
+  },
+  badgeInvalido: {
+    display: 'inline-block',
+    fontSize: '13px',
+    fontWeight: 500,
+    padding: '6px 14px',
+    borderRadius: '20px',
+    background: 'rgba(239, 68, 68, 0.1)',
+    color: '#ef4444',
+    border: '1px solid rgba(239, 68, 68, 0.3)',
+    marginBottom: '24px',
   },
   tarjetaProyecto: {
     background: 'var(--code-bg)',
