@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import geocuartelIcon from '../assets/geocuartel.png'
@@ -8,6 +8,13 @@ function TarjetaJohann() {
   const auth = useContext(AuthContext)
   const esMiPerfil = auth?.usuario?.nombre === usuarioUrl
   const [meGusta, setMeGusta] = useState<number>(0)
+  const clave = `ultima-visita-${usuarioUrl}`
+  const [visitaAnterior] = useState<string | null>(() => localStorage.getItem(clave))
+
+  // cada vez que cambia el usuario de la url guardo la fecha de esta visita
+  useEffect(() => {
+    localStorage.setItem(clave, new Date().toLocaleString('es-CL'))
+  }, [clave])
 
   return (
     <section className="project-card">
@@ -33,6 +40,11 @@ function TarjetaJohann() {
         <span className="tag">Supabase</span>
         <span className="tag">Netlify</span>
       </div>
+      <p className="ultima-visita">
+        {visitaAnterior
+          ? `Última visita a este perfil: ${visitaAnterior}`
+          : 'Primera visita a este perfil'}
+      </p>
       <button className="btn-accion" onClick={() => setMeGusta(meGusta + 1)}>
         👍 Me gusta ({meGusta})
       </button>
