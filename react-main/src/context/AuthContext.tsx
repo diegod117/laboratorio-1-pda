@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react'
 import type { ReactNode } from 'react'
+import { cuentas } from '../data/usuarios'
 
 export interface Usuario {
   nombre: string
@@ -8,7 +9,7 @@ export interface Usuario {
 
 export interface AuthContextType {
   usuario: Usuario | null
-  iniciarSesion: (nombre: string, contrasena: string) => void
+  iniciarSesion: (nombre: string, contrasena: string) => boolean
   logout: () => void
 }
 
