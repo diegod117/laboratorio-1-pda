@@ -1,43 +1,8 @@
-/* ===== Perfil — Estilos de la tarjeta de Diego ===== */
-
-/* Layout principal del perfil */
-main:has(.perfil-card) {
-  padding: 40px 24px;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-main:has(.perfil-card) > header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-}
-
-main:has(.perfil-card) > header h1 {
-  font-size: 28px;
-  margin: 0;
-}
-
-main:has(.perfil-card) > header button {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-main:has(.perfil-card) > header button:hover {
-  background: var(--accent-bg);
-  border-color: var(--accent-border);
-  color: var(--accent);
-}
+/* ===== Tarjeta de Diego ===== */
 
 /* Tarjeta de perfil */
 .perfil-card {
+  margin-top: 24px;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   border: 1px solid rgba(15, 52, 96, 0.4);
   border-radius: 16px;
@@ -147,42 +112,8 @@ main:has(.perfil-card) > header button:hover {
   opacity: 0.7;
 }
 
-/* Pantallas de error (acceso denegado / no autorizado) */
-main:has(button):not(:has(.perfil-card)) {
-  padding: 80px 24px;
-  text-align: center;
-}
-
-main:has(button):not(:has(.perfil-card)) h1 {
-  font-size: 28px;
-  margin-bottom: 8px;
-}
-
-main:has(button):not(:has(.perfil-card)) button {
-  margin-top: 20px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-main:has(button):not(:has(.perfil-card)) button:hover {
-  opacity: 0.85;
-}
-
-/* Responsive */
 @media (max-width: 600px) {
   .perfil-card {
     padding: 20px;
-  }
-
-  main:has(.perfil-card) > header {
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
   }
 }
