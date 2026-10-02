@@ -1,8 +1,22 @@
+import { useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 import geocuartelIcon from '../assets/geocuartel.png'
 
 function TarjetaJohann() {
+  const { usuario: usuarioUrl } = useParams()
+  const auth = useContext(AuthContext)
+  const esMiPerfil = auth?.usuario?.nombre === usuarioUrl
+
   return (
     <section className="project-card">
+      {esMiPerfil ? (
+        <p className="perfil-estado">Hola {usuarioUrl}, este es tu perfil</p>
+      ) : (
+        <p className="perfil-estado">
+          Estás viendo el perfil de {usuarioUrl} sin haber iniciado sesión con esa cuenta
+        </p>
+      )}
       <h3 className="project-author">Johann Cortés Farias</h3>
       <h2 className="project-title">Geocuartel</h2>
       <img src={geocuartelIcon} alt="Ícono de Geocuartel" className="project-image" />
