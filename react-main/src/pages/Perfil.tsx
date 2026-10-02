@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import TarjetaJohann from '../components/TarjetaJohann'
 import { AuthContext } from '../context/AuthContext'
 
 function Perfil() {
@@ -163,6 +164,7 @@ function Perfil() {
           Cerrar sesión
         </button>
       </div>
+      <TarjetaJohann />
     </main>
   )
 }
