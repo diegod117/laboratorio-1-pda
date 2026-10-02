@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
 function Perfil() {
@@ -44,6 +44,13 @@ function Perfil() {
     navigate('/')
   }
 
+  // Estado propio: contador de "me gusta"
+  const [meGusta, setMeGusta] = useState<number>(0)
+
+  const handleMeGusta = () => {
+    setMeGusta((prev) => prev + 1)
+  }
+
   return (
     <main>
       <header>
@@ -73,6 +80,13 @@ function Perfil() {
           <span className="tag">SQL</span>
           <span className="tag">Arduino</span>
           <span className="tag">IoT</span>
+        </div>
+
+        <div className="perfil-card-likes">
+          <button className="btn-me-gusta" onClick={handleMeGusta}>
+            👍 Me gusta
+          </button>
+          <span className="likes-count">{meGusta}</span>
         </div>
       </section>
     </main>
