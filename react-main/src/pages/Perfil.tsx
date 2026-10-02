@@ -39,13 +39,42 @@ function Perfil() {
           </div>
         </div>
 
-        {/* Saludo */}
+        {/* Saludo y Nombre completo */}
         <p style={estilos.saludo}>Bienvenido 👋</p>
-
-        {/* Nombre completo como título principal */}
         <h1 style={estilos.nombreCompleto}>{usuario.nombreCompleto}</h1>
 
-        {/* Info adicional */}
+        {/* Tarjeta con datos del Laboratorio 1 */}
+        <div style={estilos.tarjetaProyecto}>
+          <h2 style={estilos.subtituloProyecto}>Estudiante de Ingeniería Informática</h2>
+          <img
+            src="https://img.magnific.com/vector-gratis/cartel-nostalgia-noventa_603843-2317.jpg?semt=ais_hybrid&w=740&q=80"
+            alt="Proyecto de Martín"
+            style={estilos.imagenProyecto}
+          />
+          <p style={estilos.descripcionProyecto}>
+            Implementación de tableros dinámicos en Power BI para el seguimiento continuo
+            de indicadores de enfermedades profesionales. Integración y automatización de
+            flujos de datos alimentados automáticamente desde hojas de cálculo de Excel
+            para la toma de decisiones oportuna.
+          </p>
+          <div style={estilos.tags}>
+            <span style={estilos.tag}>Power BI</span>
+            <span style={estilos.tag}>Excel</span>
+            <span style={estilos.tag}>Análisis de Datos</span>
+          </div>
+          <div style={estilos.enlaces}>
+            <a
+              href="https://www.linkedin.com/feed/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={estilos.enlace}
+            >
+              Ver perfil de LinkedIn →
+            </a>
+          </div>
+        </div>
+
+        {/* Info de cuenta */}
         <div style={estilos.infoCard}>
           <div style={estilos.infoFila}>
             <span style={estilos.infoLabel}>👤 Usuario</span>
@@ -110,9 +139,61 @@ const estilos: Record<string, React.CSSProperties> = {
     fontSize: '36px',
     fontWeight: 700,
     color: 'var(--text-h)',
-    margin: '0 0 32px',
+    margin: '0 0 24px',
     letterSpacing: '-1px',
     lineHeight: 1.2,
+  },
+  tarjetaProyecto: {
+    background: 'var(--code-bg)',
+    borderRadius: '16px',
+    padding: '24px',
+    marginBottom: '24px',
+    border: '1px solid var(--border)',
+    textAlign: 'left' as const,
+  },
+  subtituloProyecto: {
+    fontSize: '17px',
+    color: 'var(--accent)',
+    margin: '0 0 16px',
+    fontWeight: 600,
+  },
+  imagenProyecto: {
+    width: '100%',
+    maxHeight: '220px',
+    objectFit: 'cover' as const,
+    borderRadius: '10px',
+    marginBottom: '16px',
+  },
+  descripcionProyecto: {
+    fontSize: '14px',
+    lineHeight: 1.6,
+    color: 'var(--text)',
+    marginBottom: '16px',
+  },
+  tags: {
+    display: 'flex',
+    gap: '8px',
+    flexWrap: 'wrap' as const,
+    marginBottom: '16px',
+  },
+  tag: {
+    fontSize: '12px',
+    fontWeight: 600,
+    padding: '4px 10px',
+    borderRadius: '20px',
+    background: 'var(--accent-bg)',
+    color: 'var(--accent)',
+    border: '1px solid var(--accent-border)',
+  },
+  enlaces: {
+    display: 'flex',
+    gap: '12px',
+  },
+  enlace: {
+    fontSize: '13px',
+    color: 'var(--accent)',
+    textDecoration: 'none',
+    fontWeight: 600,
   },
   titulo: {
     fontSize: '28px',
