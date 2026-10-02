@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
 function Perfil() {
@@ -51,6 +51,20 @@ function Perfil() {
     setMeGusta((prev) => prev + 1)
   }
 
+  // useEffect: guardar y leer la última visita en localStorage
+  const claveVisita = `ultimaVisita_${usuario.nombre}`
+  const [ultimaVisita, setUltimaVisita] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Leer la visita anterior antes de sobreescribir
+    const visitaAnterior = localStorage.getItem(claveVisita)
+    setUltimaVisita(visitaAnterior)
+
+    // Guardar la visita actual
+    const ahora = new Date().toLocaleString('es-CL')
+    localStorage.setItem(claveVisita, ahora)
+  }, [claveVisita])
+
   return (
     <main>
       <header>
@@ -88,6 +102,12 @@ function Perfil() {
           </button>
           <span className="likes-count">{meGusta}</span>
         </div>
+
+        {ultimaVisita && (
+          <p className="perfil-card-visita">
+            Última visita: {ultimaVisita}
+          </p>
+        )}
       </section>
     </main>
   )
