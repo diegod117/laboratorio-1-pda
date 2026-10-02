@@ -7,11 +7,13 @@ import { cuentas } from '../data/usuarios'
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null)
 
-  // Credenciales válidas (simulación sin backend)
+  // Credenciales válidas (simulación sin backend): se revisan en data/usuarios.ts
   const iniciarSesion = (nombre: string, contrasena: string) => {
-    if (nombre === 'diego' && contrasena === '1234') {
-      setUsuario({ nombre })
-    }
+    const valida = cuentas.some(
+      (c) => c.usuario === nombre && c.contrasena === contrasena,
+    )
+    if (valida) setUsuario({ nombre })
+    return valida
   }
   const logout = () => setUsuario(null)
 
